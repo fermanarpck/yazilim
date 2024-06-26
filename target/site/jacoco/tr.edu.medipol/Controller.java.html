@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="tr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Controller.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Medipol Final Project</a> &gt; <a href="index.source.html" class="el_package">tr.edu.medipol</a> &gt; <span class="el_source">Controller.java</span></div><h1>Controller.java</h1><pre class="source lang-java linenums">package tr.edu.medipol;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.http.HttpStatus;
+
+@RestController
+@RequestMapping()
+<span class="fc" id="L13">class Controller {</span>
+<span class="fc" id="L14">    public static List&lt;Employee&gt; Employees = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L15">    public static Map&lt;Integer, List&lt;String&gt;&gt; Tasks = new HashMap&lt;&gt;();</span>
+
+    static {
+<span class="fc" id="L18">        Employees.add(new Employee(1, &quot;Ferman&quot;));</span>
+<span class="fc" id="L19">        Employees.add(new Employee(2, &quot;Arpacık&quot;));</span>
+
+<span class="fc" id="L21">        Tasks.put(1, new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L22">        Tasks.put(2, new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L23">    }</span>
+
+    @GetMapping(&quot;/taskList&quot;)
+    public Map&lt;Integer, List&lt;String&gt;&gt; listAllTasks() {
+<span class="fc" id="L27">        return Tasks;</span>
+    }
+
+    @PostMapping(&quot;/addTask/{employeeId}&quot;)
+    public ResponseEntity&lt;String&gt; addTask(@PathVariable Integer employeeId, @RequestBody Task eTask) {
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (!Tasks.containsKey(employeeId))</span>
+<span class="nc" id="L33">            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(&quot;Employee not found&quot;);</span>
+
+<span class="fc" id="L35">        Tasks.get(employeeId).add(eTask.task);</span>
+
+<span class="fc" id="L37">        return ResponseEntity.ok(&quot;Task added successfully&quot;);</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
