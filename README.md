@@ -1,9 +1,9 @@
-# MEDIPOL ÜNİVERSİTESİ
-## YAZILIM GELİŞTİRME ORTAM VE ARAÇLARI
-### BAHAR DÖNEMİ / FİNAL PROJESİ
+MEDIPOL ÜNİVERSİTESİ
+YAZILIM GELİŞTİRME ORTAM VE ARAÇLARI
+BAHAR DÖNEMİ / Büt PROJESİ
 
 ## İçerik
-- Spring Boot ile Güngören Belediyesi, Çalışan Takibi ve Yönetim Sistemi
+- Spring Boot ile Tuzla Belediyesi, Çalışan Takibi ve Yönetim Sistemi
 
 ## Kullanılan Teknolojiler
 
